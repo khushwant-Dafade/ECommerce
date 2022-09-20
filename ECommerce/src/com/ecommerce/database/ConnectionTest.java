@@ -9,7 +9,7 @@ public class ConnectionTest {
 	public Connection getConnectionDetails() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/warehouse","root","8830650130Pooja");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/warehouse","root","Jayshree@123");
 			
 		}catch(Exception e) {
 			System.out.println(e);

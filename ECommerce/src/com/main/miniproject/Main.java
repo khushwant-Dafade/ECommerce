@@ -14,7 +14,7 @@ public class Main {
 			
 			
 			UserRegistration register = new UserRegistration();
-			register.getCustomerdetails( "pooja","8830650130","morepooja@gmail.com","bharati vidyapeeth");
+			register.getCustomerdetails( "pooja","8830650","morepooja@gmail.com","bharati vidyapeeth");
 			
 			GetProduct getproduct = new GetProduct();
 			getproduct.getProductDetails();
@@ -28,7 +28,10 @@ public class Main {
 			BuyMultipleProduct buy = new BuyMultipleProduct();
 			buy.getCustomerChoice();
 			
-		
+		// Register user Details 
+			GetRegisterUserDetails abc = new GetRegisterUserDetails();
+			abc.getRegisterUserDetails();
+			
 
 		}
 
