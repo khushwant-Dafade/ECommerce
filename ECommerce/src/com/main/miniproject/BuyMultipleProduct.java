@@ -57,11 +57,11 @@ public class BuyMultipleProduct {
     	   }else {
     		   System.out.println("Added to cart Successfully...");
     		   System.out.println("Remaining Devices: " + (currentQuantity - customerChoiceQuantity));
-    		   //update database & shoping card
-    		  // new UpdateDatabaseProduct((currentQuantity - customerChoiceQuantity), customerChoiceProduct);
+    	//	   update database & shoping card
+    		   new UpdateDatabaseProduct((currentQuantity - customerChoiceQuantity), customerChoiceProduct);
     		   
-    		  // UserCart obj =  new UserCart();
-    		  // obj.storeUserCart(currentQuantity, customerChoiceQuantity);
+    		   UserCart obj =  new UserCart(currentQuantity,customerChoiceQuantity);
+    		 // UserCart(currentQuantity, customerChoiceQuantity);
     		   
     	   }
 
