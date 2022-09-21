@@ -10,10 +10,7 @@ public class Main {
 
 		public static void main(String[] args) throws SQLException {
 			
-			//make the cart ready for new user
-			new TruncateTheCart();
-			
-			
+					
 			System.out.println(" 1. for User");
 			System.out.println(" 2. for Admin Login");
 			System.out.print("Please enter your choice: ");
@@ -23,6 +20,7 @@ public class Main {
 			switch(firstChoice) {
 			case 1:
 				new UserDriver();
+				new TruncateTheCart();
 				break;
 				
 			case 2:

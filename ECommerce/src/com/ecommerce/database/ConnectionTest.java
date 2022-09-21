@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class ConnectionTest {
 	private String userName = "root";
-	private String pass = "8390309081";
+	private String pass = "8830650130Pooja";
 	
 	Connection con = null;
 	public Connection getConnectionDetails() {

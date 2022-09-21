@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 public class GetRegisterUserDetails {
 
 	private String userName = "root";
-	private String pass = "8390309081";
+	private String pass = "8830650130Pooja";
 	private String msg = "Registered User's List: ";
 	
 	public void getRegisterUserDetails(){
