@@ -23,8 +23,7 @@ public class UpdateDatabaseProduct {
 			 ps.setInt(1, quantity);
 			 ps.setInt(2, id);
 			 
-			 int i = ps.executeUpdate();
-			 System.out.println(i + "Done");
+			 ps.executeUpdate();
 			
 		 } catch (SQLException e) {
 			e.printStackTrace();

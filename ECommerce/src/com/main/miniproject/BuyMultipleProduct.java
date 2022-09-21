@@ -12,31 +12,43 @@ public class BuyMultipleProduct {
 
 	PreparedStatement ps =null;
 	Connection con = null;
-	
+	private static Scanner takeInput = new Scanner(System.in);
 	
 	
 	private int customerChoiceProduct;
 	private int customerChoiceQuantity;
+	int userChoice = 1;
 	
 	public void getCustomerChoice() {
+		while(userChoice != 0) {
 			
-		Scanner takeInput = new Scanner(System.in);
-		System.out.println("Enter the Product Number : ");
-		customerChoiceProduct = takeInput.nextInt();
+			GetProduct getproduct = new GetProduct();
+			getproduct.getProductDetails();
 		
-		if(customerChoiceProduct == 0) {
-			System.out.println("Thank You, Visit again....");
-			System.exit(1);
-		}
+			System.out.print("Enter the Product Number : ");
+			customerChoiceProduct = takeInput.nextInt();
+			
+			System.out.print("Enter the Product Quantity : ");
+			customerChoiceQuantity = takeInput.nextInt();
+			
+			try {
+				checkDatabase();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("=============================================================================");
+			System.out.print("\nEnter '0' (zero) to Exit the Program OR Enter '1' (One) to Continue Shoping.");
+			System.out.print("\nEnter Your Choice: ");
+			userChoice = takeInput.nextInt();
+			System.out.println();
+			
+			if(userChoice == 0) {
+				GetSumOfUserPurchase g = new GetSumOfUserPurchase();
+				g.getTotal();
+			}
 		
-		System.out.println("Enter the Product Quantity : ");
-		customerChoiceQuantity = takeInput.nextInt();
-		try {
-			checkDatabase();
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
-	
 	}
 	
 	
@@ -49,19 +61,20 @@ public class BuyMultipleProduct {
 		 ps.setInt(1,customerChoiceProduct);
 		 
        ResultSet rs= ps.executeQuery();
+       
        while(rs.next()) {
     	   int currentQuantity = rs.getInt(1);
     	   if(currentQuantity < customerChoiceQuantity) {
     		   System.out.println("This much quantity is not available...");
     		   
     	   }else {
-    		   System.out.println("Added to cart Successfully...");
-    		   System.out.println("Remaining Devices: " + (currentQuantity - customerChoiceQuantity));
-    	//	   update database & shoping card
-    		   new UpdateDatabaseProduct((currentQuantity - customerChoiceQuantity), customerChoiceProduct);
+    		   int remainingQuantity = (currentQuantity - customerChoiceQuantity);
+    		   System.out.println("\nAdded to cart Successfully...\n");
     		   
-    		   UserCart obj =  new UserCart(currentQuantity,customerChoiceQuantity);
-    		 // UserCart(currentQuantity, customerChoiceQuantity);
+    		   
+    		   new UpdateDatabaseProduct(remainingQuantity, customerChoiceProduct);
+    		   
+    		   new UserCart(customerChoiceProduct,customerChoiceQuantity);
     		   
     	   }
 

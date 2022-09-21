@@ -1,36 +1,34 @@
 package com.main.miniproject;
 import java.sql.SQLException;
-import com.ecommerce.database.*;
-import com.main.miniproject.*;
-//import com.database.miniproject.RetriveProductByQuantity;
-//import com.database.miniproject.RetriveProductByQuantity;
+import java.util.Scanner;
+import com.ecommerce.database.TruncateTheCart;
 
 public class Main {
 
-	
+		static private Scanner scanner = new Scanner(System.in);
 	
 
 		public static void main(String[] args) throws SQLException {
 			
-			
-			UserRegistration register = new UserRegistration();
-			register.getCustomerdetails( "pooja","8830650","morepooja@gmail.com","bharati vidyapeeth");
-			
-			GetProduct getproduct = new GetProduct();
-			getproduct.getProductDetails();
-			
-
-//			RetriveProductByQuantity rt = new RetriveProductByQuantity();
-//			rt.insertProductDetails();
+			//make the cart ready for new user
+			new TruncateTheCart();
 			
 			
-			//user can but multiple product
-			BuyMultipleProduct buy = new BuyMultipleProduct();
-			buy.getCustomerChoice();
+			System.out.println(" 1. for User");
+			System.out.println(" 2. for Admin Login");
+			System.out.print("Please enter your choice: ");
+			int firstChoice = scanner.nextInt();
 			
-		// Register user Details 
-			GetRegisterUserDetails abc = new GetRegisterUserDetails();
-			abc.getRegisterUserDetails();
+			
+			switch(firstChoice) {
+			case 1:
+				new UserDriver();
+				break;
+				
+			case 2:
+				new AdminDriver();
+				break;
+			}
 			
 
 		}

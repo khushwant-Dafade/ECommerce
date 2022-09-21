@@ -9,7 +9,7 @@ public class RetriveProductByQuantity {
 
 		PreparedStatement ps =null;
 		Connection con = null;
-		
+		private static Scanner takeInput = new Scanner(System.in);
 		
 		public void insertProductDetails() throws SQLException {
 	
@@ -17,10 +17,7 @@ public class RetriveProductByQuantity {
 			ConnectionTest ct = new ConnectionTest();
 			con = ct.getConnectionDetails();
 			
-			
-			Scanner takeInput = new Scanner(System.in);
-			
-			System.out.println("Please Enter the Id : ");
+			System.out.print("\nPlease Enter the  Product Id  : ");
 			int product_id = takeInput.nextInt();
 			
 			
@@ -31,7 +28,9 @@ public class RetriveProductByQuantity {
 			ResultSet resultSet = ps.executeQuery();
 			
 			while(resultSet.next()) {
+				System.out.println("=========================================");
 				System.out.println("Quantity of given Product id is : " + resultSet.getInt(1));
+				System.out.println("=========================================\n");
 			}
 			
 			

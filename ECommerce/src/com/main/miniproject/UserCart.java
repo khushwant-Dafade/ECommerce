@@ -29,25 +29,18 @@ public class UserCart {
 				 description = resultSet.getString(2);
 			     price = resultSet.getInt(3);
 
-			     System.out.println(description);
-				 System.out.println(price);
-				 
 			 }
 			 
-			 
-			 
-			 
 			 ps=con.prepareStatement("Insert into cart values (?,?,?,?,?)");
-			 ps.setInt(1,id);
+			 int total_price = (price * quantity);
+			 
+			 ps.setInt(1,id); 
 			 ps.setString(2, description);
 			 ps.setInt(3, price);
 			 ps.setInt(4,quantity);
-			 ps.setInt (5,(price*quantity));
+			 ps.setInt (5, total_price );
 			 
-			 boolean rs=ps.execute();
-			 System.out.println(rs);
-			 
-					 
+			 ps.execute();
 			 
 		 }catch(Exception e){
 			 e.printStackTrace();

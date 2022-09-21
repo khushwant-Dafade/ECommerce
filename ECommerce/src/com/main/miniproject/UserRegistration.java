@@ -6,32 +6,38 @@ import java.util.Scanner;
 import com.ecommerce.database.ConnectionTest;
 
 public class UserRegistration {
-		
 		Connection con=null;
 		PreparedStatement ps=null;
+		private static Scanner scanner = new Scanner(System.in);
 		
-		public void getCustomerdetails(String customer_name,String mobile_number,String email_id,String address)
+		public void getCustomerdetails()
 		{
 			try {
 				
 				
 				ConnectionTest connectiontest=new ConnectionTest();
 				con=connectiontest.getConnectionDetails();
+				ps=con.prepareStatement("insert into customerdetails(customer_name,mobile_number,email_id,address)values(?,?,?,?)");
 				
+				System.out.println("==================================");
 				
+				System.out.print("Enter Your Name: ");
+				ps.setString(1, scanner.next());
+			    
+				System.out.print("Enter Your Mobile Number: ");
+				ps.setString(2, scanner.next());
 				
-		    ps=con.prepareStatement("insert into customerdetails(customer_name,mobile_number,email_id,address)values(?,?,?,?)");
-		  	ps.setString(1, customer_name);
-			ps.setString(2, mobile_number);
-			ps.setString(3, email_id);
-			ps.setString(4, address);
+				System.out.print("Enter Your Email Id: ");
+				ps.setString(3, scanner.next());
+				
+				System.out.print("Enter Your Address: ");
+				ps.setString(4, scanner.next());
 
 				
-			int i=ps.executeUpdate();
+				ps.executeUpdate();
 			
-			System.out.println("==========================");
-			System.err.println("Thank You For Registering");	
-			
+				System.out.println("====================================\n");
+				System.err.println("Thank You For Registering.");	
 				
 			}
 			
@@ -41,31 +47,8 @@ public class UserRegistration {
 			}
 		}
 		
-		public static void main(String[] args) {
-			Scanner sc=new Scanner (System.in);
-		
-			System.err.println("Welcome To Warehouse");
-			System.out.println("==============================");
 			
-			{
-			
-			System.out.println("Enter Customer Name");
-			String cname=sc.next();		
-			System.out.println("Enter Mobile Number");
-			String cmobnum=sc.next();	
-			System.out.println("Enter Email Address");
-			String cemail=sc.next();	
-			System.out.println("Enter Address");
-			String cadd=sc.next();	
-			
-			UserRegistration rs=new UserRegistration();
-			rs.getCustomerdetails(cname,cmobnum,cemail,cadd);
-			
-			
-		}
-			sc.close();
-		}	
-	}
+}
 
 
 
